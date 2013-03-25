@@ -21,6 +21,7 @@ var ldHashmap = function LDHashMap(server, msgpack) {
         changeKeyOfElement: function (key, nKey) {
             var tempStore = map[key];
             delete map[key];
+            tempStore.name = nKey;
             map[nKey] = tempStore;
         },
         eachElement:        function (callback) {

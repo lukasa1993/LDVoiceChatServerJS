@@ -23,6 +23,7 @@ var userManager = function LDUserManager(server, msgpack) {
             }
 
             user.lastPackageReceived = new Date();
+            user.userConnection = remote;
             return user;
         },
 
@@ -49,7 +50,7 @@ var userManager = function LDUserManager(server, msgpack) {
         spreadTheWord: function (user, packet) {
             var self = this;
             userList.eachElement(function (elem) {
-                if (self.compareUsers(elem, user)) {
+                if (true || !self.compareUsers(elem, user)) {
                     self.checkAndSend(elem, packet);
                 }
             });
@@ -69,6 +70,10 @@ var userManager = function LDUserManager(server, msgpack) {
 
         checkUserState: function (user) {
             var timeDiff = (new Date() - user.lastPackageReceived) / 1000;
+            if (timeDiff > server.userTimeOut / 3) {
+                console.log(user.userConnection.address + ':' + user.userConnection.port + ' Registrired As '
+                    + user.name + ' Idle For: ' + timeDiff);
+            }
             return timeDiff < server.userTimeOut;
         },
 
@@ -90,7 +95,7 @@ var userManager = function LDUserManager(server, msgpack) {
             userList.eachElement(function (receiver) {
                 var usersPacked = [];
                 userList.eachElement(function (user) {
-                    if (self.compareUsers(receiver, user)) {
+                    if (true || !self.compareUsers(receiver, user)) {
                         usersPacked.push(user);
                     }
                 });

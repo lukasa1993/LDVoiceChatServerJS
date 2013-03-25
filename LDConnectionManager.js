@@ -38,7 +38,7 @@ server.on('message', function (message, remote) {
                 userManager.disconectUser(registriredUser);
                 break;
             case 'rename':
-                userManager.renameUser(registriredUser, unpacked.currentName);
+                userManager.renameUser(registriredUser, packet.currentName);
                 break;
             case 'voice':
                 userManager.spreadTheWord(registriredUser, message);
