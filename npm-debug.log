@@ -1,0 +1,343 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'link', 'msgpack' ]
+2 info using npm@1.2.14
+3 info using node@v0.10.0
+4 verbose install where,what [ '/usr/local/lib', [ 'msgpack' ] ]
+5 verbose read json /usr/local/lib/package.json
+6 verbose read json /usr/local/lib/node_modules/node-gyp/package.json
+7 verbose read json /usr/local/lib/node_modules/npm/package.json
+8 verbose read json /usr/local/lib/package.json
+9 verbose cache add [ 'msgpack', null ]
+10 verbose cache add name=undefined spec="msgpack" args=["msgpack",null]
+11 verbose parsed url { protocol: null,
+11 verbose parsed url   slashes: null,
+11 verbose parsed url   auth: null,
+11 verbose parsed url   host: null,
+11 verbose parsed url   port: null,
+11 verbose parsed url   hostname: null,
+11 verbose parsed url   hash: null,
+11 verbose parsed url   search: null,
+11 verbose parsed url   query: null,
+11 verbose parsed url   pathname: 'msgpack',
+11 verbose parsed url   path: 'msgpack',
+11 verbose parsed url   href: 'msgpack' }
+12 silly lockFile a836d599-msgpack msgpack
+13 verbose lock msgpack /Users/lukasa/.npm/a836d599-msgpack.lock
+14 silly lockFile a836d599-msgpack msgpack
+15 silly lockFile a836d599-msgpack msgpack
+16 verbose addNamed [ 'msgpack', '' ]
+17 verbose addNamed [ null, '' ]
+18 silly lockFile 7f9d0373-msgpack msgpack@
+19 verbose lock msgpack@ /Users/lukasa/.npm/7f9d0373-msgpack.lock
+20 silly addNameRange { name: 'msgpack', range: '', hasData: false }
+21 verbose registry.get msgpack not expired, no request
+22 silly addNameRange number 2 { name: 'msgpack', range: '', hasData: true }
+23 silly addNameRange versions [ 'msgpack',
+23 silly addNameRange   [ '0.1.2', '0.1.3', '0.1.5', '0.1.6', '0.1.7', '0.1.8' ] ]
+24 verbose addNamed [ 'msgpack', '0.1.8' ]
+25 verbose addNamed [ '0.1.8', '0.1.8' ]
+26 silly lockFile 2bfcf42c-msgpack-0-1-8 msgpack@0.1.8
+27 verbose lock msgpack@0.1.8 /Users/lukasa/.npm/2bfcf42c-msgpack-0-1-8.lock
+28 verbose read json /Users/lukasa/.npm/msgpack/0.1.8/package/package.json
+29 silly lockFile 2bfcf42c-msgpack-0-1-8 msgpack@0.1.8
+30 silly lockFile 2bfcf42c-msgpack-0-1-8 msgpack@0.1.8
+31 silly lockFile 7f9d0373-msgpack msgpack@
+32 silly lockFile 7f9d0373-msgpack msgpack@
+33 silly resolved [ { name: 'msgpack',
+33 silly resolved     description: 'A space-efficient object serialization library for node.js',
+33 silly resolved     version: '0.1.8',
+33 silly resolved     homepage: 'https://github.com/pgriess/node-msgpack',
+33 silly resolved     author: { name: 'Peter Griess', email: 'pg@std.in' },
+33 silly resolved     contributors: [ [Object], [Object] ],
+33 silly resolved     repository:
+33 silly resolved      { type: 'git',
+33 silly resolved        url: 'https://github.com/pgriess/node-msgpack.git' },
+33 silly resolved     main: './lib/msgpack',
+33 silly resolved     directories: { lib: 'lib' },
+33 silly resolved     engines: { node: '>=0.8.x' },
+33 silly resolved     bin:
+33 silly resolved      { json2msgpack: './bin/json2msgpack',
+33 silly resolved        msgpack2json: './bin/msgpack2json' },
+33 silly resolved     scripts: { install: 'node-gyp rebuild' },
+33 silly resolved     gypfile: true,
+33 silly resolved     readme: '`node-msgpack` is an addon for [NodeJS](http://nodejs.org) that provides an\nAPI for serializing and de-serializing JavaScript objects using the\n[MessagePack](http://msgpack.sourceforge.net) library. The performance of this\naddon compared to the native `JSON` object is quite good, and the space\nrequired for serialized data is far less than JSON.\n\n### Performance\n\n`node-msgpack` outperforms the built-in `JSON.stringify()` and `JSON.parse()`\nmethods handily. The following tests were performed with 500,000 instances of\nthe JavaScript object `{\'abcdef\' : 1, \'qqq\' : 13, \'19\' : [1, 2, 3, 4]}`:\n\n   * `JSON.stringify()` 7.17 seconds\n   * `JSON.parse(JSON.stringify())` 22.18 seconds\n   * `msgpack.pack()` 5.80 seconds\n   * `msgpack.unpack(msgpack.pack())` 8.62 seconds\n\nNote that `node-msgpack` produces and consumes Buffer objects, and a such does\nnot incur encoding/decoding overhead when performing I/O with native strings.\n\n### Usage\n\nThis module provides two methods: `pack()`, which consumes a JavaScript object\nand produces a node Buffer object; and `unpack()`, which consumes a node Buffer\nobject and produces a JavaScript object. Packing of all native JavaScript types\n(undefined, boolean, numbers, strings, arrays and objects) is supported, as\nis the node Buffer type.\n\nThe below code snippet packs and then unpacks a JavaScript object, verifying\nthe resulting object at the end using `assert.deepEqual()`.\n\n    var assert = require(\'assert\');\n    var msgpack = require(\'msgpack\');\n\n    var o = {"a" : 1, "b" : 2, "c" : [1, 2, 3]};\n    var b = msgpack.pack(o);\n    var oo = msgpack.unpack(b);\n\n    assert.deepEqual(oo, o);\n\nAs a convenience, a higher level streaming API is provided in the\n`msgpack.Stream` class, which can be constructed around a `net.Stream`\ninstance. This object emits `msg` events when an object has been received.\n\n    var msgpack = require(\'msgpack\');\n\n    // ... get a net.Stream instance, s, from somewhere\n    \n    var ms = new msgpack.Stream(s);\n    ms.addListener(\'msg\', function(m) {\n        sys.debug(\'received message: \' + sys.inspect(m));\n    });\n\n### Type Mapping\n\nThe JavaScript type system does not map cleanly on to the MsgPack type system,\nthough it\'s pretty close.\n\nWhen packing, JavaScript values are mapped to MsgPack types as follows\n\n   * `undefined` and `null` values map to `MSGPACK_OBJECT_NIL`\n   * `boolean` values map to `MSGPACK_OBJECT_BOOLEAN`\n   * `number` values map differently depending on their value\n      * Floating point values map to `MSGPACK_OBJECT_DOUBLE`\n      * Positive values map to `MSGPACK_OBJECT_POSITIVE_INTEGER`\n      * Negative values map to `MSGPACK_OBJECT_NEGATIVE_INTEGER`\n   * `string` values map to `MSGPACK_OBJECT_RAW`; all strings are serialized\n     with UTF-8 encoding\n   * Array values (as defined by `Array.isArray()`) map to\n     `MSGPACK_OBJECT_ARRAY`; each element in the array is packed individually\n     the rules in this list\n   * NodeJS Buffer values map to `MSGPACK_OBJECT_RAW`\n   * Everything else maps to `MSGPACK_OBJECT_MAP`, where we iterate over the object\'s\n     properties and pack them and their values as per the mappings in this list\n\nWhen unpacking, MsgPack types are mapped to JavaScript values as follows\n\n   * `MSGPACK_OBJECT_NIL` values map to the `null` value\n   * `MSGPACK_OBJECT_BOOLEAN` values map to `boolean` values\n   * `MSGPACK_OBJECT_POSITIVE_INTEGER`, `MSGPACK_OBJECT_NEGATIVE_INTEGER` and\n     `MSGPACK_OBJECT_DOUBLE` values map to `number` values\n   * `MSGPACK_OBJECT_ARRAY` values map to arrays; each object in the array is\n      packed individually using the rules in this list\n   * `MSGPACK_OBJECT_RAW` values are mapped to `string` values; these values are\n     unpacked using either UTF-8 or ASCII encoding, depending on the contents\n     of the raw buffer\n   * `MSGPACK_OBJECT_MAP` values are mapped to JavaScript objects; keys and values\n     are unpacked individually using the rules in this list\n\nStrings are particularly problematic here, as it\'s difficult to get hints down\ninto the packing and unpacking codepaths about how to interpret a particular\nstring or `MSGPACK_OBJECT_RAW`. If you have strict requirements about the\nencoding of your strings, it\'s recommended that you populate a Buffer object\nyourself (e.g. using `Buffer.write()`) and pack that buffer rather than the\nstring. This will ensure that you can control what gets packed.\n\nWhen unpacking, things are trickier as there is no way to know the encoding\nused when a string was packed. There is an [an open\nticket](http://github.com/msgpack/msgpack/issues/issue/13) for the MsgPack\nformat to address this.\n\n### Command Line Utilities\n\nAs a convenience and for debugging, `bin/json2msgpack` and `bin/msgpack2json`\nare provided to convert JSON data to and from MessagePack data, reading from\nstdin and writing to stdout.\n\n    % echo \'[1, 2, 3]\' | ./bin/json2msgpack | xxd -\n    0000000: 9301 0203                                ....\n    % echo \'[1, 2, 3]\' | ./bin/json2msgpack | ./bin/msgpack2json \n    [1,2,3]\n\n### Building and installation\n\nThere are two ways to install msgpack.\n\n## npm\n\n\t\tnpm install msgpack\n\nThis should build and install msgpack for you. Then just `require(\'msgpack\')`.\n\n## Manually\n\nUse `make` to build the add-on, then manually copy `build/default/mpBindings.node` \nand `lib/msgpack.js` it to wherever your node.js installation will look for it (or\nadd the build directory to your `$NODE_PATH`).\n\n    % ls\n    LICENSE  Makefile  README.md  deps/  src/  tags  test.js\n    % make\n\nThe MessagePack library on which this depends is packaged with `node-msgpack`\nand will be built as part of this process.\n\n**Note:** MessagePack may fail to build if you do not have a modern version of\ngcc in your `$PATH`. On Mac OS X Snow Leopard (10.5.x), you may have to use\n`gcc-4.2`, which should come with your box but is not used by default.\n\n    % make CC=gcc-4.2 CXX=gcc-4.2\n',
+33 silly resolved     readmeFilename: 'README.md',
+33 silly resolved     _id: 'msgpack@0.1.8',
+33 silly resolved     _from: 'msgpack@' } ]
+34 info install msgpack@0.1.8 into /usr/local/lib
+35 info installOne msgpack@0.1.8
+36 verbose from cache /Users/lukasa/.npm/msgpack/0.1.8/package/package.json
+37 info /usr/local/lib/node_modules/msgpack unbuild
+38 verbose read json /usr/local/lib/node_modules/msgpack/package.json
+39 verbose tar unpack /Users/lukasa/.npm/msgpack/0.1.8/package.tgz
+40 silly lockFile 1fed1028-r-local-lib-node-modules-msgpack /usr/local/lib/node_modules/msgpack
+41 verbose lock /usr/local/lib/node_modules/msgpack /Users/lukasa/.npm/1fed1028-r-local-lib-node-modules-msgpack.lock
+42 silly lockFile 508b6f56-sa-npm-msgpack-0-1-8-package-tgz /Users/lukasa/.npm/msgpack/0.1.8/package.tgz
+43 verbose lock /Users/lukasa/.npm/msgpack/0.1.8/package.tgz /Users/lukasa/.npm/508b6f56-sa-npm-msgpack-0-1-8-package-tgz.lock
+44 silly gunzTarPerm modes [ '755', '644' ]
+45 silly gunzTarPerm extractEntry package.json
+46 silly gunzTarPerm extractEntry .npmignore
+47 silly gunzTarPerm extractEntry README.md
+48 silly gunzTarPerm extractEntry LICENSE
+49 silly gunzTarPerm extractEntry bench.js
+50 silly gunzTarPerm extractEntry test/test-stream-disjoint.js
+51 silly gunzTarPerm extractEntry test/test-stream.js
+52 silly gunzTarPerm extractEntry test/test-unpack-extra.js
+53 silly gunzTarPerm extractEntry test/test.js
+54 silly gunzTarPerm extractEntry bin/json2msgpack
+55 silly gunzTarPerm extractEntry bin/msgpack2json
+56 silly gunzTarPerm extractEntry binding.gyp
+57 silly gunzTarPerm extractEntry deps/msgpack/LICENSE
+58 silly gunzTarPerm extractEntry deps/msgpack/msgpack.hpp
+59 silly gunzTarPerm extractEntry deps/msgpack/gcc_atomic.cpp
+60 silly gunzTarPerm extractEntry deps/msgpack/AUTHORS
+61 silly gunzTarPerm extractEntry deps/msgpack/msgpack/unpack.h
+62 silly gunzTarPerm extractEntry deps/msgpack/msgpack/object.h
+63 silly gunzTarPerm extractEntry deps/msgpack/msgpack/pack.h
+64 silly gunzTarPerm extractEntry deps/msgpack/msgpack/pack.hpp
+65 silly gunzTarPerm extractEntry deps/msgpack/msgpack/pack_define.h
+66 silly gunzTarPerm extractEntry deps/msgpack/msgpack/pack_template.h
+67 silly gunzTarPerm extractEntry deps/msgpack/msgpack/sbuffer.h
+68 silly gunzTarPerm extractEntry deps/msgpack/msgpack/sbuffer.hpp
+69 silly gunzTarPerm extractEntry deps/msgpack/msgpack/sysdep.h
+70 silly gunzTarPerm extractEntry deps/msgpack/msgpack/type/nil.hpp
+71 silly gunzTarPerm extractEntry deps/msgpack/msgpack/type/bool.hpp
+72 silly gunzTarPerm extractEntry deps/msgpack/msgpack/type/deque.hpp
+73 silly gunzTarPerm extractEntry deps/msgpack/msgpack/type/fixint.hpp
+74 silly gunzTarPerm extractEntry deps/msgpack/msgpack/type/float.hpp
+75 silly gunzTarPerm extractEntry deps/msgpack/msgpack/type/int.hpp
+76 silly gunzTarPerm extractEntry deps/msgpack/msgpack/type/list.hpp
+77 silly gunzTarPerm extractEntry deps/msgpack/msgpack/type/map.hpp
+78 silly gunzTarPerm extractEntry deps/msgpack/msgpack/type/define.hpp
+79 silly gunzTarPerm extractEntry deps/msgpack/msgpack/type/pair.hpp
+80 silly gunzTarPerm extractEntry deps/msgpack/msgpack/type/raw.hpp
+81 silly gunzTarPerm extractEntry deps/msgpack/msgpack/type/set.hpp
+82 silly gunzTarPerm extractEntry deps/msgpack/msgpack/type/string.hpp
+83 silly gunzTarPerm extractEntry deps/msgpack/msgpack/type/tr1/unordered_map.hpp
+84 silly gunzTarPerm extractEntry deps/msgpack/msgpack/type/tr1/unordered_set.hpp
+85 silly gunzTarPerm extractEntry deps/msgpack/msgpack/type/tuple.hpp
+86 silly gunzTarPerm extractEntry deps/msgpack/msgpack/type/vector.hpp
+87 silly gunzTarPerm extractEntry deps/msgpack/msgpack/type.hpp
+88 silly gunzTarPerm extractEntry deps/msgpack/msgpack/object.hpp
+89 silly gunzTarPerm extractEntry deps/msgpack/msgpack/unpack.hpp
+90 silly gunzTarPerm extractEntry deps/msgpack/msgpack/unpack_define.h
+91 silly gunzTarPerm extractEntry deps/msgpack/msgpack/unpack_template.h
+92 silly gunzTarPerm extractEntry deps/msgpack/msgpack/version.h
+93 silly gunzTarPerm extractEntry deps/msgpack/msgpack/vrefbuffer.h
+94 silly gunzTarPerm extractEntry deps/msgpack/msgpack/vrefbuffer.hpp
+95 silly gunzTarPerm extractEntry deps/msgpack/msgpack/zbuffer.h
+96 silly gunzTarPerm extractEntry deps/msgpack/msgpack/zbuffer.hpp
+97 silly gunzTarPerm extractEntry deps/msgpack/msgpack/zone.h
+98 silly gunzTarPerm extractEntry deps/msgpack/msgpack/zone.hpp
+99 silly gunzTarPerm extractEntry deps/msgpack/msgpack.gyp
+100 silly gunzTarPerm extractEntry deps/msgpack/msgpack.h
+101 silly gunzTarPerm extractEntry deps/msgpack/COPYING
+102 silly gunzTarPerm extractEntry deps/msgpack/object.cpp
+103 silly gunzTarPerm extractEntry deps/msgpack/objectc.c
+104 silly gunzTarPerm extractEntry deps/msgpack/unpack.c
+105 silly gunzTarPerm extractEntry deps/msgpack/version.c
+106 silly gunzTarPerm extractEntry deps/msgpack/vrefbuffer.c
+107 silly gunzTarPerm extractEntry deps/msgpack/zone.c
+108 silly gunzTarPerm extractEntry src/msgpack.cc
+109 silly gunzTarPerm extractEntry lib/msgpack.js
+110 verbose read json /usr/local/lib/node_modules/msgpack/package.json
+111 silly lockFile 1fed1028-r-local-lib-node-modules-msgpack /usr/local/lib/node_modules/msgpack
+112 silly lockFile 1fed1028-r-local-lib-node-modules-msgpack /usr/local/lib/node_modules/msgpack
+113 silly lockFile 508b6f56-sa-npm-msgpack-0-1-8-package-tgz /Users/lukasa/.npm/msgpack/0.1.8/package.tgz
+114 silly lockFile 508b6f56-sa-npm-msgpack-0-1-8-package-tgz /Users/lukasa/.npm/msgpack/0.1.8/package.tgz
+115 info preinstall msgpack@0.1.8
+116 verbose from cache /usr/local/lib/node_modules/msgpack/package.json
+117 verbose readDependencies using package.json deps
+118 verbose from cache /usr/local/lib/node_modules/msgpack/package.json
+119 verbose readDependencies using package.json deps
+120 silly resolved []
+121 verbose about to build /usr/local/lib/node_modules/msgpack
+122 info build /usr/local/lib/node_modules/msgpack
+123 verbose from cache /usr/local/lib/node_modules/msgpack/package.json
+124 verbose linkStuff [ false, false, false, '/usr/local/lib/node_modules' ]
+125 info linkStuff msgpack@0.1.8
+126 verbose linkBins msgpack@0.1.8
+127 verbose link bins [ { json2msgpack: './bin/json2msgpack',
+127 verbose link bins     msgpack2json: './bin/msgpack2json' },
+127 verbose link bins   '/usr/local/lib/node_modules/.bin',
+127 verbose link bins   false ]
+128 verbose linkMans msgpack@0.1.8
+129 verbose rebuildBundles msgpack@0.1.8
+130 info install msgpack@0.1.8
+131 warn cannot run in wd msgpack@0.1.8 node-gyp rebuild (wd=/usr/local/lib/node_modules/msgpack)
+132 info postinstall msgpack@0.1.8
+133 verbose read json /usr/local/lib/package.json
+134 verbose from cache /usr/local/lib/node_modules/msgpack/package.json
+135 verbose from cache /usr/local/lib/node_modules/node-gyp/package.json
+136 verbose from cache /usr/local/lib/node_modules/npm/package.json
+137 verbose read json /usr/local/lib/node_modules/node-gyp/node_modules/fstream/package.json
+138 verbose read json /usr/local/lib/node_modules/node-gyp/node_modules/glob/package.json
+139 verbose read json /usr/local/lib/node_modules/node-gyp/node_modules/graceful-fs/package.json
+140 verbose read json /usr/local/lib/node_modules/node-gyp/node_modules/minimatch/package.json
+141 verbose read json /usr/local/lib/node_modules/node-gyp/node_modules/mkdirp/package.json
+142 verbose read json /usr/local/lib/node_modules/node-gyp/node_modules/nopt/package.json
+143 verbose read json /usr/local/lib/node_modules/node-gyp/node_modules/npmlog/package.json
+144 verbose read json /usr/local/lib/node_modules/node-gyp/node_modules/osenv/package.json
+145 verbose read json /usr/local/lib/node_modules/node-gyp/node_modules/request/package.json
+146 verbose read json /usr/local/lib/node_modules/node-gyp/node_modules/rimraf/package.json
+147 verbose read json /usr/local/lib/node_modules/node-gyp/node_modules/semver/package.json
+148 verbose read json /usr/local/lib/node_modules/node-gyp/node_modules/tar/package.json
+149 verbose read json /usr/local/lib/node_modules/node-gyp/node_modules/which/package.json
+150 verbose read json /usr/local/lib/node_modules/npm/node_modules/abbrev/package.json
+151 verbose read json /usr/local/lib/node_modules/npm/node_modules/ansi/package.json
+152 verbose read json /usr/local/lib/node_modules/npm/node_modules/archy/package.json
+153 verbose read json /usr/local/lib/node_modules/npm/node_modules/block-stream/package.json
+154 verbose read json /usr/local/lib/node_modules/npm/node_modules/chmodr/package.json
+155 verbose read json /usr/local/lib/node_modules/npm/node_modules/chownr/package.json
+156 verbose read json /usr/local/lib/node_modules/npm/node_modules/fstream/package.json
+157 verbose read json /usr/local/lib/node_modules/npm/node_modules/fstream-npm/package.json
+158 verbose read json /usr/local/lib/node_modules/npm/node_modules/glob/package.json
+159 verbose read json /usr/local/lib/node_modules/npm/node_modules/graceful-fs/package.json
+160 verbose read json /usr/local/lib/node_modules/npm/node_modules/inherits/package.json
+161 verbose read json /usr/local/lib/node_modules/npm/node_modules/ini/package.json
+162 verbose read json /usr/local/lib/node_modules/npm/node_modules/init-package-json/package.json
+163 verbose read json /usr/local/lib/node_modules/npm/node_modules/lockfile/package.json
+164 verbose read json /usr/local/lib/node_modules/npm/node_modules/lru-cache/package.json
+165 verbose read json /usr/local/lib/node_modules/npm/node_modules/minimatch/package.json
+166 verbose read json /usr/local/lib/node_modules/npm/node_modules/mkdirp/package.json
+167 verbose read json /usr/local/lib/node_modules/npm/node_modules/msgpack/package.json
+168 verbose read json /usr/local/lib/node_modules/npm/node_modules/node-gyp/package.json
+169 verbose read json /usr/local/lib/node_modules/npm/node_modules/nopt/package.json
+170 verbose read json /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/package.json
+171 verbose read json /usr/local/lib/node_modules/npm/node_modules/npmconf/package.json
+172 verbose read json /usr/local/lib/node_modules/npm/node_modules/npmlog/package.json
+173 verbose read json /usr/local/lib/node_modules/npm/node_modules/once/package.json
+174 verbose read json /usr/local/lib/node_modules/npm/node_modules/opener/package.json
+175 verbose read json /usr/local/lib/node_modules/npm/node_modules/osenv/package.json
+176 verbose read json /usr/local/lib/node_modules/npm/node_modules/read/package.json
+177 verbose read json /usr/local/lib/node_modules/npm/node_modules/read-installed/package.json
+178 verbose read json /usr/local/lib/node_modules/npm/node_modules/read-package-json/package.json
+179 verbose read json /usr/local/lib/node_modules/npm/node_modules/request/package.json
+180 verbose read json /usr/local/lib/node_modules/npm/node_modules/retry/package.json
+181 verbose read json /usr/local/lib/node_modules/npm/node_modules/rimraf/package.json
+182 verbose read json /usr/local/lib/node_modules/npm/node_modules/semver/package.json
+183 verbose read json /usr/local/lib/node_modules/npm/node_modules/slide/package.json
+184 verbose read json /usr/local/lib/node_modules/npm/node_modules/tar/package.json
+185 verbose read json /usr/local/lib/node_modules/npm/node_modules/uid-number/package.json
+186 verbose read json /usr/local/lib/node_modules/npm/node_modules/which/package.json
+187 verbose read json /usr/local/lib/node_modules/node-gyp/node_modules/fstream/node_modules/inherits/package.json
+188 verbose read json /usr/local/lib/node_modules/node-gyp/node_modules/glob/node_modules/inherits/package.json
+189 verbose read json /usr/local/lib/node_modules/node-gyp/node_modules/minimatch/node_modules/lru-cache/package.json
+190 verbose read json /usr/local/lib/node_modules/node-gyp/node_modules/minimatch/node_modules/sigmund/package.json
+191 verbose read json /usr/local/lib/node_modules/node-gyp/node_modules/nopt/node_modules/abbrev/package.json
+192 verbose read json /usr/local/lib/node_modules/node-gyp/node_modules/npmlog/node_modules/ansi/package.json
+193 verbose read json /usr/local/lib/node_modules/node-gyp/node_modules/tar/node_modules/block-stream/package.json
+194 verbose read json /usr/local/lib/node_modules/node-gyp/node_modules/tar/node_modules/inherits/package.json
+195 verbose read json /usr/local/lib/node_modules/npm/node_modules/fstream-npm/node_modules/fstream-ignore/package.json
+196 verbose read json /usr/local/lib/node_modules/npm/node_modules/init-package-json/node_modules/promzard/package.json
+197 verbose read json /usr/local/lib/node_modules/npm/node_modules/minimatch/node_modules/sigmund/package.json
+198 verbose read json /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/node_modules/couch-login/package.json
+199 verbose read json /usr/local/lib/node_modules/npm/node_modules/npmconf/node_modules/config-chain/package.json
+200 verbose read json /usr/local/lib/node_modules/npm/node_modules/read/node_modules/mute-stream/package.json
+201 verbose read json /usr/local/lib/node_modules/npm/node_modules/npmconf/node_modules/config-chain/node_modules/proto-list/package.json
+202 verbose readInstalled returning msgpack@0.1.8
+203 verbose readInstalled returning node-gyp@0.9.1
+204 verbose readInstalled returning npm@1.2.14
+205 verbose readInstalled returning glob@3.1.21
+206 verbose readInstalled returning graceful-fs@1.2.0
+207 verbose readInstalled returning fstream@0.1.22
+208 verbose readInstalled returning minimatch@0.2.11
+209 verbose readInstalled returning mkdirp@0.3.5
+210 verbose readInstalled returning nopt@2.1.1
+211 verbose readInstalled returning npmlog@0.0.2
+212 verbose readInstalled returning osenv@0.0.3
+213 verbose readInstalled returning request@2.9.203
+214 verbose readInstalled returning rimraf@2.1.4
+215 verbose readInstalled returning semver@1.1.4
+216 verbose readInstalled returning tar@0.1.17
+217 verbose readInstalled returning which@1.0.5
+218 verbose readInstalled returning inherits@1.0.0
+219 verbose readInstalled returning lru-cache@2.2.2
+220 verbose readInstalled returning sigmund@1.0.0
+221 verbose readInstalled returning inherits@1.0.0
+222 verbose readInstalled returning abbrev@1.0.4
+223 verbose readInstalled returning ansi@0.1.2
+224 verbose readInstalled returning inherits@1.0.0
+225 verbose readInstalled returning block-stream@0.0.6
+226 verbose readInstalled returning semver@1.1.4
+227 verbose readInstalled returning ini@1.1.0
+228 verbose readInstalled returning slide@1.1.3
+229 verbose readInstalled returning abbrev@1.0.4
+230 verbose readInstalled returning graceful-fs@1.2.0
+231 verbose readInstalled returning minimatch@0.2.11
+232 verbose readInstalled returning nopt@2.1.1
+233 verbose readInstalled returning rimraf@2.1.4
+234 verbose readInstalled returning request@2.9.203
+235 verbose readInstalled returning which@1.0.5
+236 verbose readInstalled returning tar@0.1.16
+237 verbose readInstalled returning fstream@0.1.22
+238 verbose readInstalled returning block-stream@0.0.6
+239 verbose readInstalled returning inherits@1.0.0
+240 verbose readInstalled returning mkdirp@0.3.5
+241 verbose readInstalled returning read@1.0.4
+242 verbose readInstalled returning lru-cache@2.2.2
+243 verbose readInstalled returning node-gyp@0.8.5
+244 verbose readInstalled returning fstream-npm@0.1.3
+245 verbose readInstalled returning uid-number@0.0.3
+246 verbose readInstalled returning archy@0.0.2
+247 verbose readInstalled returning chownr@0.0.1
+248 verbose readInstalled returning npmlog@0.0.2
+249 verbose readInstalled returning ansi@0.1.2
+250 verbose readInstalled returning npm-registry-client@0.2.18
+251 verbose readInstalled returning read-package-json@0.2.2
+252 verbose readInstalled returning read-installed@0.1.1
+253 verbose readInstalled returning glob@3.1.21
+254 verbose readInstalled returning init-package-json@0.0.6
+255 verbose readInstalled returning osenv@0.0.3
+256 verbose readInstalled returning lockfile@0.3.0
+257 verbose readInstalled returning retry@0.6.0
+258 verbose readInstalled returning once@1.1.1
+259 verbose readInstalled returning npmconf@0.0.23
+260 verbose readInstalled returning opener@1.3.0
+261 verbose readInstalled returning chmodr@0.1.0
+262 verbose readInstalled returning sigmund@1.0.0
+263 verbose readInstalled returning mute-stream@0.0.3
+264 verbose readInstalled returning fstream-ignore@0.0.6
+265 verbose readInstalled returning couch-login@0.1.15
+266 verbose readInstalled returning promzard@0.2.0
+267 verbose readInstalled returning config-chain@1.1.5
+268 verbose readInstalled returning proto-list@1.2.2
+269 verbose readInstalled returning undefined
+270 info /Users/lukasa/node_modules/msgpack unbuild
+271 verbose read json /Users/lukasa/node_modules/msgpack/package.json
+272 verbose link symlinking ../../../../usr/local/lib/node_modules/msgpack to /Users/lukasa/node_modules/msgpack
+273 info build /Users/lukasa/node_modules/msgpack
+274 verbose read json /Users/lukasa/node_modules/msgpack/package.json
+275 info preinstall msgpack@0.1.8
+276 verbose linkStuff [ false, false, false, '/Users/lukasa/node_modules' ]
+277 info linkStuff msgpack@0.1.8
+278 verbose linkBins msgpack@0.1.8
+279 verbose link bins [ { json2msgpack: './bin/json2msgpack',
+279 verbose link bins     msgpack2json: './bin/msgpack2json' },
+279 verbose link bins   '/Users/lukasa/node_modules/.bin',
+279 verbose link bins   false ]
+280 verbose linkMans msgpack@0.1.8
+281 verbose rebuildBundles msgpack@0.1.8
+282 info install msgpack@0.1.8
+283 verbose unsafe-perm in lifecycle false
+284 verbose set uid from=0 to=501
+285 silly exec sh "-c" "node-gyp rebuild"
+286 silly sh,-c,node-gyp rebuild,/Users/lukasa/node_modules/msgpack spawning
+287 info msgpack@0.1.8 Failed to exec install script
+288 error msgpack@0.1.8 install: `node-gyp rebuild`
+288 error `sh "-c" "node-gyp rebuild"` failed with 1
+289 error Failed at the msgpack@0.1.8 install script.
+289 error This is most likely a problem with the msgpack package,
+289 error not with npm itself.
+289 error Tell the author that this fails on your system:
+289 error     node-gyp rebuild
+289 error You can get their info via:
+289 error     npm owner ls msgpack
+289 error There is likely additional logging output above.
+290 error System Darwin 12.3.0
+291 error command "node" "/usr/local/bin/npm" "link" "msgpack"
+292 error cwd /Users/lukasa/WebstormProjects/LDVoiceChatServerJS
+293 error node -v v0.10.0
+294 error npm -v 1.2.14
+295 error code ELIFECYCLE
+296 verbose exit [ 1, true ]
