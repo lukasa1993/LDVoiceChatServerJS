@@ -34,6 +34,9 @@ server.on('message', function (message, remote) {
             remote.address + ':' + remote.port + ' Named ' + name);
         registriredUser = userManager.createOrUpdateUser(name, remote);
         switch (action) {
+            case 'init':
+                userManager.informUserListChanged();
+                break;
             case 'disc':
                 userManager.disconectUser(registriredUser);
                 break;

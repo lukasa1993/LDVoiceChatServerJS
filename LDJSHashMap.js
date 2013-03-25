@@ -24,8 +24,14 @@ var ldHashmap = function LDHashMap(server, msgpack) {
             tempStore.name = nKey;
             map[nKey] = tempStore;
         },
+        mergeKeys:          function (key1, key2) {
+            var tempStore = map[key1];
+            delete map[key1];
+            delete map[key2];
+            map[key1] = tempStore;
+        },
         eachElement:        function (callback) {
-            Object.getOwnPropertyNames(map).forEach(function(val, idx, array) {
+            Object.getOwnPropertyNames(map).forEach(function (val, idx, array) {
                 callback(map[val]);
             });
         }
