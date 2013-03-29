@@ -6,7 +6,7 @@
  */
 
 var PORT = 4444
-    , HOST = '127.0.0.1'
+    , HOST = '192.168.1.111'
     , dgram = require('dgram')
     , msgpack = require('./msgpack')
     , userManagerFunc = require('./LDUserManager.js')

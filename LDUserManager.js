@@ -50,7 +50,7 @@ var userManager = function LDUserManager(server, msgpack) {
         spreadTheWord: function (user, packet) {
             var self = this;
             userList.eachElement(function (elem) {
-                if (true || !self.compareUsers(elem, user)) {
+                if (false || !self.compareUsers(elem, user)) {
                     self.checkAndSend(elem, packet);
                 }
             });
@@ -95,7 +95,7 @@ var userManager = function LDUserManager(server, msgpack) {
             userList.eachElement(function (receiver) {
                 var usersPacked = [];
                 userList.eachElement(function (user) {
-                    if (true || !self.compareUsers(receiver, user)) {
+                    if (false || !self.compareUsers(receiver, user)) {
                         usersPacked.push(user);
                     }
                 });
