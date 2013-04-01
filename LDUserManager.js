@@ -7,7 +7,8 @@
 
 
 var userManager = function LDUserManager(server, msgpack) {
-    var userList = require('./LDJSHashMap.js')();
+    var jsHashMap = require('./LDJSHashMap.js')
+        , userList = jsHashMap();
 
     return {
         createOrUpdateUser: function (name, remote) {
@@ -16,6 +17,7 @@ var userManager = function LDUserManager(server, msgpack) {
                 user = {
                     name:                name,
                     userConnection:      remote,
+                    muteList:            jsHashMap(),
                     lastPackageReceived: new Date()
                 };
                 userList.addElement(name, user);
@@ -50,7 +52,7 @@ var userManager = function LDUserManager(server, msgpack) {
         spreadTheWord: function (user, packet) {
             var self = this;
             userList.eachElement(function (elem) {
-                if (false || !self.compareUsers(elem, user)) {
+                if ( (true || !self.compareUsers(elem, user)) && !user.muteList.getElement(elem.name)) {
                     self.checkAndSend(elem, packet);
                 }
             });
@@ -90,12 +92,20 @@ var userManager = function LDUserManager(server, msgpack) {
             return sameUsers;
         },
 
+        userMutes: function (user, villain) {
+            user.muteList.addElement(villain, null);
+        },
+
+        userUnMutes: function (user, villain) {
+            user.muteList.removeElement(villain);
+        },
+
         informUserListChanged: function () {
             var self = this;
             userList.eachElement(function (receiver) {
                 var usersPacked = [];
                 userList.eachElement(function (user) {
-                    if (false || !self.compareUsers(receiver, user)) {
+                    if ((true || !self.compareUsers(receiver, user))) {
                         usersPacked.push(user);
                     }
                 });

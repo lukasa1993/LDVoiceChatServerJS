@@ -41,10 +41,16 @@ server.on('message', function (message, remote) {
                 userManager.disconectUser(registriredUser);
                 break;
             case 'rename':
-                userManager.renameUser(registriredUser, packet.currentName);
+                userManager.renameUser(registriredUser, packet['currentName']);
                 break;
             case 'voice':
                 userManager.spreadTheWord(registriredUser, message);
+                break;
+            case 'mute':
+                userManager.userMutes(registriredUser, packet['villain']);
+                break;
+            case 'unmute':
+                userManager.userUnMutes(registriredUser, packet['villain']);
                 break;
         }
     }
