@@ -27,15 +27,17 @@ server.on('message', function (message, remote) {
     var packet = msgpack.unpack(message)
         , action
         , name
-        , registriredUser;
+        , registriredUser
+        , channel;
 
-    if ((action = packet.action) && (name = packet.name)) {
+    if ((action = packet.action) && (name = packet.name) && (channel = packet.channel)) {
         console.log('Packet of Length ' + message.length + ' Received From ' +
-            remote.address + ':' + remote.port + ' Named ' + name);
-        registriredUser = userManager.createOrUpdateUser(name, remote);
+            remote.address + ':' + remote.port + ' Named ' + name +
+            'On Channel: ' + channel);
+        registriredUser = userManager.createOrUpdateUser(name, channel, remote);
         switch (action) {
             case 'init':
-                userManager.informUserListChanged();
+                userManager.informUserListChangedInChannel(channel);
                 break;
             case 'disc':
                 userManager.disconectUser(registriredUser);

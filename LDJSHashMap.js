@@ -9,28 +9,26 @@ var ldHashmap = function LDHashMap(server, msgpack) {
     var map = {};
 
     return {
-        addElement:         function (key, value) {
+        addElement: function (key, value) {
             map[key] = value;
         },
-        removeElement:      function (key) {
+
+        removeElement: function (key) {
             delete map[key];
         },
-        getElement:         function (key) {
+
+        getElement: function (key) {
             return map[key];
         },
+
         changeKeyOfElement: function (key, nKey) {
             var tempStore = map[key];
             delete map[key];
             tempStore.name = nKey;
             map[nKey] = tempStore;
         },
-        mergeKeys:          function (key1, key2) {
-            var tempStore = map[key1];
-            delete map[key1];
-            delete map[key2];
-            map[key1] = tempStore;
-        },
-        eachElement:        function (callback) {
+
+        eachElement: function (callback) {
             Object.getOwnPropertyNames(map).forEach(function (val, idx, array) {
                 callback(map[val]);
             });

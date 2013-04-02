@@ -8,8 +8,8 @@ var sys = require('sys');
 
 var MSGS = [
     [1, 2, 3],
-    {'a' : 1, 'b' : 2},
-    {'test' : [1, 'a', 3]}
+    {'a': 1, 'b': 2},
+    {'test': [1, 'a', 3]}
 ];
 var fds = netBindings.socketpair();
 
@@ -19,7 +19,7 @@ var os = new net.Stream(fds[1]);
 var oms = new msgpack.Stream(os);
 
 var msgsReceived = 0;
-ims.addListener('msg', function(m) {
+ims.addListener('msg', function (m) {
     assert.deepEqual(m, MSGS[msgsReceived]);
 
     if (++msgsReceived == MSGS.length) {

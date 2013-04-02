@@ -1,13 +1,13 @@
 var assert = require('assert');
 var msgpack = require('../lib/msgpack');
 
-var testEqual = function(v) {
+var testEqual = function (v) {
     var vv = msgpack.unpack(msgpack.pack(v));
 
     assert.deepEqual(vv, v);
 };
 
-var testCircular = function(v) {
+var testCircular = function (v) {
     try {
         msgpack.pack(v);
         assert.ok(false, 'expected exception');
@@ -28,7 +28,7 @@ testEqual(true);
 testEqual(false);
 testEqual([1, 2, 3]);
 testEqual([1, 'abc', false, null]);
-testEqual({'a' : [1, 2, 3], 'b' : 'cdef', 'c' : {'nuts' : 'qqq'}});
+testEqual({'a': [1, 2, 3], 'b': 'cdef', 'c': {'nuts': 'qqq'}});
 
 // Make sure dates are handled properly
 var date = new Date();

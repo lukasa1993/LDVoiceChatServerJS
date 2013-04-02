@@ -9,13 +9,13 @@ var sys = require('sys');
 
 var MSGS = [
     [1, 2, 3],
-    {'a' : 1, 'b' : 2},
-    {'test' : [1, 'a', 3]}
+    {'a': 1, 'b': 2},
+    {'test': [1, 'a', 3]}
 ];
 
 // Write a buffer to a stream with a delay
-var writemsg = function(s, buf, delay) {
-    setTimeout(function() {
+var writemsg = function (s, buf, delay) {
+    setTimeout(function () {
             sys.debug(sys.inspect(buf));
             s.write(buf);
         },
@@ -30,7 +30,7 @@ var ims = new msgpack.Stream(is);
 var os = new net.Stream(fds[1]);
 
 var msgsReceived = 0;
-ims.addListener('msg', function(m) {
+ims.addListener('msg', function (m) {
     sys.debug('received msg: ' + sys.inspect(m));
 
     assert.deepEqual(m, MSGS[msgsReceived]);

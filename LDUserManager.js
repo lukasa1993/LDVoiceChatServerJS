@@ -8,20 +8,23 @@
 
 var userManager = function LDUserManager(server, msgpack) {
     var jsHashMap = require('./LDJSHashMap.js')
-        , userList = jsHashMap();
+        , channelManagerFunc = require('./LDJSHashMap.js')
+        , channelManager = channelManagerFunc();
 
     return {
-        createOrUpdateUser: function (name, remote) {
+        createOrUpdateUser: function (name, channel, remote) {
             var user;
-            if (!(user = userList.getElement(name))) {
+            if (!(user = channelManager.getUserByChannelAndName(channel, name))) {
                 user = {
                     name:                name,
                     userConnection:      remote,
                     muteList:            jsHashMap(),
+                    channel:             channel,
                     lastPackageReceived: new Date()
                 };
-                userList.addElement(name, user);
-                this.informUserListChanged();
+
+                channelManager.registerUserOnChannel(channel, user);
+                userManager.informUserListChangedInChannel(channel);
             }
 
             user.lastPackageReceived = new Date();
@@ -30,50 +33,50 @@ var userManager = function LDUserManager(server, msgpack) {
         },
 
         disconectUser: function (user) {
-            userList.removeElement(user.name);
-            this.informUserListChanged();
-            console.log(user.userConnection.address + ':' + user.userConnection.port + ' Registrired As '
+            channelManager.deRegisterUserOnChannelByName(user.name);
+            userManager.informUserListChangedInChannel(user.channel);
+
+            console.log(user.userConnection.address + ':' + user.userConnection.port + ' Registered As '
                 + user.name + ' Disconnected');
         },
 
         renameUser: function (user, currentName) {
             if (currentName.length > 0) {
-                userList.changeKeyOfElement(user.name, currentName);
-                console.log(user.userConnection.address + ':' + user.userConnection.port + ' Registrired As '
+                channelManager.renameUserInChannel(user, currentName);
+                userManager.informUserListChangedInChannel(user.channel);
+
+                console.log(user.userConnection.address + ':' + user.userConnection.port + ' Registered As '
                     + user.name + ' Renamed Into ' + currentName);
             } else {
-                userList.removeElement(user.name);
-                console.log(user.userConnection.address + ':' + user.userConnection.port + ' Registrired As '
-                    + user.name + ' Disconnected');
+                userManager.disconectUser(user);
             }
-            this.informUserListChanged();
         },
 
         spreadTheWord: function (user, packet) {
-            var self = this;
-            userList.eachElement(function (elem) {
-                if ( (true || !self.compareUsers(elem, user)) && !user.muteList.getElement(elem.name)) {
-                    self.checkAndSend(elem, packet);
+            channelManager.eachUserInChannel(user.channel, function (elem) {
+                if (!userManager.compareUsers(elem, user) && !user.muteList.getElement(elem.name)) {
+                    userManager.checkAndSend(elem, packet);
                 }
             });
         },
 
         checkAndSend: function (user, packet) {
-            if (user.name && this.checkUserState(user)) {
+            if (user.name && userManager.checkUserState(user)) {
                 server.send(packet, 0, packet.length,
                     user.userConnection.port, user.userConnection.address, null);
                 console.log('Packet of Length ' + packet.length + ' Sent To '
-                    + user.userConnection.address + ':' + user.userConnection.port + ' Registrired As ' + user.name);
+                    + user.userConnection.address + ':' + user.userConnection.port
+                    + ' Registered As ' + user.name);
             }
             else {
-                this.disconectUser(user);
+                userManager.disconectUser(user);
             }
         },
 
         checkUserState: function (user) {
             var timeDiff = (new Date() - user.lastPackageReceived) / 1000;
             if (timeDiff > server.userTimeOut / 3) {
-                console.log(user.userConnection.address + ':' + user.userConnection.port + ' Registrired As '
+                console.log(user.userConnection.address + ':' + user.userConnection.port + ' Registered As '
                     + user.name + ' Idle For: ' + timeDiff);
             }
             return timeDiff < server.userTimeOut;
@@ -100,16 +103,15 @@ var userManager = function LDUserManager(server, msgpack) {
             user.muteList.removeElement(villain);
         },
 
-        informUserListChanged: function () {
-            var self = this;
-            userList.eachElement(function (receiver) {
+        informUserListChangedInChannel: function (channel) {
+            channelManager.eachUserInChannel(channel, function (receiver) {
                 var usersPacked = [];
-                userList.eachElement(function (user) {
-                    if ((true || !self.compareUsers(receiver, user))) {
+                channelManager.eachUserInChannel(channel, function (user) {
+                    if (!userManager.compareUsers(receiver, user)) {
                         usersPacked.push(user);
                     }
                 });
-                self.checkAndSend(receiver, msgpack.pack({
+                userManager.checkAndSend(receiver, msgpack.pack({
                     action:   'list',
                     name:     'server',
                     userList: usersPacked
@@ -117,6 +119,6 @@ var userManager = function LDUserManager(server, msgpack) {
             });
         }
     };
-}
+};
 
 module.exports = userManager;

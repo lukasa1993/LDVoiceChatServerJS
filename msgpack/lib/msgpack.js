@@ -18,7 +18,7 @@ var unpack = mpBindings.unpack;
 exports.pack = pack;
 exports.unpack = unpack;
 
-var Stream = function(s) {
+var Stream = function (s) {
     var self = this;
 
     events.EventEmitter.call(self);
@@ -30,7 +30,7 @@ var Stream = function(s) {
     // 
     // Allows the caller to pass additional arguments, which are passed
     // faithfully down to the write() method of the underlying stream.
-    self.send = function(m) {
+    self.send = function (m) {
         // Sigh, no arguments.slice() method
         var args = [pack(m)];
         for (i = 1; i < arguments.length; i++) {
@@ -42,7 +42,7 @@ var Stream = function(s) {
 
     // Listen for data from the underlying stream, consuming it and emitting
     // 'msg' events as we find whole messages.
-    s.addListener('data', function(d) {
+    s.addListener('data', function (d) {
         // Make sure that self.buf reflects the entirety of the unread stream
         // of bytes; it needs to be a single buffer
         if (self.buf) {
