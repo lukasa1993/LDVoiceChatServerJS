@@ -6,16 +6,17 @@
  */
 
 
-var channelManager = function LDUserManager() {
+var channelManager = function LDChannelManager() {
     var jsHashMap = require('./LDJSHashMap.js')
         , channelList = jsHashMap()
-        , usersChannelsList = jsHashMap();
+        , usersChannelsList = jsHashMap()
+        , userCount = 0;
 
     return {
         registerUserOnChannel: function (channel, user) {
-            var existingChannel = channelManager.getChannelByName(user.name);
-            if (existingChannel != channel) {
-                channelList.getElement(existingChannel).removeElement(user.name);
+            var existingChannel = this.getChannelByName(user.name);
+            if (existingChannel && existingChannel != channel) {
+                this.deRegisterUserOnChannelByName(user);
             }
 
             var usersInChannel = channelList.getElement(channel);
@@ -25,15 +26,22 @@ var channelManager = function LDUserManager() {
             }
 
             usersInChannel.addElement(user.name, user);
-            usersChannelsList.addElement(user, channel);
+            usersChannelsList.addElement(user.name, channel);
+            userCount++;
         },
 
-        deRegisterUserOnChannelByName: function (name) {
-            var existendChannel = usersChannelsList.getElement(name)
-            if (existendChannel) {
-                channelList.removeElement(existendChannel);
+        deRegisterUserOnChannelByName: function (user) {
+            try {
+                channelList.getElement(user.channel).removeElement(user.name);
+                usersChannelsList.removeElement(user.name);
+                if (channelList.getElement(user.channel).getElementCount() == 0) {
+                    channelList.removeElement(user.channel);
+                }
+                userCount--;
+            } catch (e) {
+                console.log("KLeoba Moxda ragaca Kuradgeba Miakciee !!!!!");
+                console.log(e);
             }
-            usersChannelsList.removeElement(name);
         },
 
         renameUserInChannel: function (user, currentName) {
@@ -56,6 +64,10 @@ var channelManager = function LDUserManager() {
             return undefined;
         },
 
+        getTotalUserCount: function () {
+            return userCount;
+        },
+
         eachUserInChannel: function (channel, callback) {
             try {
                 channelList.getElement(channel).eachElement(callback);
@@ -63,8 +75,20 @@ var channelManager = function LDUserManager() {
                 console.log("KLeoba Moxda ragaca Kuradgeba Miakciee !!!!!");
                 console.log(e);
             }
+        },
+
+        eachUserInEveryChannel: function (callback) {
+            channelList.eachElement(function (elem) {
+                var userList = channelList.getElement(elem);
+                if (userList) {
+                    userList.eachElement(callback);
+                } else {
+                    console.log("Ratoa ees Null ??");
+                    console.log(elem);
+                }
+            });
         }
     };
-}
+};
 
 module.exports = channelManager;

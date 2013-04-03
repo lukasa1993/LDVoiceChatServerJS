@@ -6,19 +6,30 @@
  */
 
 var ldHashmap = function LDHashMap(server, msgpack) {
-    var map = {};
+    var map = {}
+        , elementCount = 0;
 
     return {
         addElement: function (key, value) {
             map[key] = value;
+            elementCount++;
         },
 
         removeElement: function (key) {
             delete map[key];
+            elementCount--;
         },
 
         getElement: function (key) {
             return map[key];
+        },
+
+        getElementCount: function () {
+            return elementCount;
+        },
+
+        getKeyArray: function () {
+            return Object.getOwnPropertyNames(map);
         },
 
         changeKeyOfElement: function (key, nKey) {

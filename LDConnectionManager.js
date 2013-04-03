@@ -13,7 +13,9 @@ var PORT = 4444
     , server = dgram.createSocket('udp4')
     , userManager = userManagerFunc(server, msgpack);
 
+server.connectionLimit = 10000;
 server.userTimeOut = 60;
+
 server.sendTo = function (userConnection, packet) {
     server.send(packet, 0, packet.length, userConnection.port, userConnection.address, null);
 };
@@ -33,7 +35,7 @@ server.on('message', function (message, remote) {
     if ((action = packet.action) && (name = packet.name) && (channel = packet.channel)) {
         console.log('Packet of Length ' + message.length + ' Received From ' +
             remote.address + ':' + remote.port + ' Named ' + name +
-            'On Channel: ' + channel);
+            ' On Channel: ' + channel);
         registriredUser = userManager.createOrUpdateUser(name, channel, remote);
         switch (action) {
             case 'init':
@@ -59,5 +61,7 @@ server.on('message', function (message, remote) {
 });
 
 server.bind(PORT, HOST);
+
+setInterval(userManager.checkForDeadPeople, 1800000);
 
 
