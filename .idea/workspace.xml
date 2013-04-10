@@ -2,18 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="48548253-aa6a-4d08-9997-086b6793c877" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LDChannelManager.js" afterPath="$PROJECT_DIR$/LDChannelManager.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LDConnectionManager.js" afterPath="$PROJECT_DIR$/LDConnectionManager.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LDJSHashMap.js" afterPath="$PROJECT_DIR$/LDJSHashMap.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LDUserManager.js" afterPath="$PROJECT_DIR$/LDUserManager.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="LDVoiceChatServerJS.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/LDConnectionManager.js" changelist="48548253-aa6a-4d08-9997-086b6793c877" time="1365414317607" ignored="false" />
     <file path="/fragment.js" changelist="48548253-aa6a-4d08-9997-086b6793c877" time="1365411513267" ignored="false" />
     <file path="/a.js" changelist="48548253-aa6a-4d08-9997-086b6793c877" time="1363959174655" ignored="false" />
-    <file path="/LDUserManager.js" changelist="48548253-aa6a-4d08-9997-086b6793c877" time="1365597511746" ignored="false" />
+    <file path="/LDUserManager.js" changelist="48548253-aa6a-4d08-9997-086b6793c877" time="1365606043005" ignored="false" />
     <file path="/LDJSHashMap.js" changelist="48548253-aa6a-4d08-9997-086b6793c877" time="1364984056763" ignored="false" />
     <file path="/Dummy.txt" changelist="48548253-aa6a-4d08-9997-086b6793c877" time="1365070068192" ignored="false" />
     <file path="/a.dummy" changelist="48548253-aa6a-4d08-9997-086b6793c877" time="1365415768742" ignored="false" />
@@ -46,19 +42,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LDUserManager.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="LDUserManager.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/LDUserManager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="8" selection-start="1554" selection-end="1554" vertical-scroll-proportion="0.0">
+            <state line="157" column="50" selection-start="6385" selection-end="6385" vertical-scroll-proportion="0.5133588">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LDJSHashMap.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="LDJSHashMap.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/LDJSHashMap.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="47" column="2" selection-start="1060" selection-end="1060" vertical-scroll-proportion="1.3454199">
+            <state line="47" column="2" selection-start="1060" selection-end="1060" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -67,7 +63,7 @@
       <file leaf-file-name="LDChannelManager.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/LDChannelManager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="60" selection-start="1046" selection-end="1046" vertical-scroll-proportion="0.0">
+            <state line="68" column="8" selection-start="2114" selection-end="2114" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -93,8 +89,8 @@
       <list>
         <option value="$PROJECT_DIR$/LDChannelManager.js" />
         <option value="$PROJECT_DIR$/LDJSHashMap.js" />
-        <option value="$PROJECT_DIR$/LDUserManager.js" />
         <option value="$PROJECT_DIR$/LDConnectionManager.js" />
+        <option value="$PROJECT_DIR$/LDUserManager.js" />
       </list>
     </option>
   </component>
@@ -274,7 +270,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39829478" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3276492" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3276492" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -423,9 +419,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/LDChannelManager.js">
+    <entry file="file://$PROJECT_DIR$/LDJSHashMap.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="60" selection-start="1046" selection-end="1046" vertical-scroll-proportion="0.0">
+        <state line="47" column="2" selection-start="1060" selection-end="1060" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -437,16 +433,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/LDUserManager.js">
+    <entry file="file://$PROJECT_DIR$/LDChannelManager.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="8" selection-start="1554" selection-end="1554" vertical-scroll-proportion="0.0">
+        <state line="68" column="8" selection-start="2114" selection-end="2114" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/LDJSHashMap.js">
+    <entry file="file://$PROJECT_DIR$/LDUserManager.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="2" selection-start="1060" selection-end="1060" vertical-scroll-proportion="1.3454199">
+        <state line="157" column="50" selection-start="6385" selection-end="6385" vertical-scroll-proportion="0.5133588">
           <folding />
         </state>
       </provider>

@@ -122,7 +122,7 @@ var userManager = function LDUserManager(server, msgpack) {
         },
 
         informUserListChangedInChannel: function (channel) {
-            if(userList.getElementCount() == 0) return;
+            if (userList.getElementCount() == 0) return;
             var self = this;
             channelManager.eachUserInChannel(channel, function (receiver) {
                 var usersPacked = [];
@@ -155,7 +155,7 @@ var userManager = function LDUserManager(server, msgpack) {
         checkForDeadPeople: function () {
             var deadPeople = 0, self = this;
             console.log("Running DeadPeople Check");
-            channelManager.eachUserInEveryChannel(function (elem) {
+            userList.eachElement(function (elem) {
                 if (!checkUserState(elem)) {
                     self.disconnectUser(elem);
                     deadPeople++;
