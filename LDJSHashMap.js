@@ -5,7 +5,7 @@
  * Time: 12:04 PM
  */
 
-var ldHashmap = function LDHashMap(server, msgpack) {
+var ldHashmap = function LDHashMap() {
     var map = {}
         , elementCount = 0;
 
@@ -28,23 +28,23 @@ var ldHashmap = function LDHashMap(server, msgpack) {
             return elementCount;
         },
 
-        getKeyArray: function () {
-            return Object.getOwnPropertyNames(map);
-        },
-
-        changeKeyOfElement: function (key, nKey) {
-            var tempStore = map[key];
-            delete map[key];
-            tempStore.name = nKey;
-            map[nKey] = tempStore;
-        },
+//        getKeyArray: function () {
+//            return Object.getOwnPropertyNames(map);
+//        },
+//
+//        changeKeyOfElement: function (key, nKey) {
+//            var tempStore = map[key];
+//            delete map[key];
+//            tempStore.name = nKey;
+//            map[nKey] = tempStore;
+//        },
 
         eachElement: function (callback) {
-            Object.getOwnPropertyNames(map).forEach(function (val, idx, array) {
+            Object.getOwnPropertyNames(map).forEach(function (val) {
                 callback(map[val]);
             });
         }
     };
-}
+};
 
 module.exports = ldHashmap;

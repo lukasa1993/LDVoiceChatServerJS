@@ -8,72 +8,61 @@
 
 var channelManager = function LDChannelManager() {
     var jsHashMap = require('./LDJSHashMap.js')
-        , channelList = jsHashMap()
-        , usersChannelsList = jsHashMap()
-        , userCount = 0;
+        , channelList = jsHashMap();
+
+    var addUserInChannel = function (user) {
+        var channel = channelList.getElement(user.channel);
+        if (!channel) {
+            channelList.addElement(user.channel, jsHashMap());
+            channel = channelList.getElement(user.channel);
+        }
+        channel.addElement(user.userID, user);
+    }, removeUserFromChannel = function (user) {
+        var channel = channelList.getElement(user.channel);
+        if (channel) {
+            channel.removeElement(user.userID);
+            if (channel.getElementCount() == 0) {
+                channelList.removeElement(user.channel);
+            }
+        }
+    };
 
     return {
-        registerUserOnChannel: function (channel, user) {
-            var existingChannel = this.getChannelByName(user.name);
-            if (existingChannel && existingChannel != channel) {
-                this.deRegisterUserOnChannelByName(user);
+        registerUserOnChannel: function (user) {
+            try {
+                addUserInChannel(user);
+            } catch (e) {
+                console.error("KLeoba Moxda ragaca Kuradgeba Miakciee 0 !!!!!");
+                console.error(e);
             }
-
-            var usersInChannel = channelList.getElement(channel);
-            if (!usersInChannel) {
-                channelList.addElement(channel, jsHashMap());
-                usersInChannel = channelList.getElement(channel);
-            }
-
-            usersInChannel.addElement(user.name, user);
-            usersChannelsList.addElement(user.name, channel);
-            userCount++;
         },
 
         deRegisterUserOnChannelByName: function (user) {
             try {
-                channelList.getElement(user.channel).removeElement(user.name);
-                usersChannelsList.removeElement(user.name);
-                if (channelList.getElement(user.channel).getElementCount() == 0) {
-                    channelList.removeElement(user.channel);
-                }
-                userCount--;
+                removeUserFromChannel(user);
             } catch (e) {
-                console.log("KLeoba Moxda ragaca Kuradgeba Miakciee !!!!!");
-                console.log(e);
+                console.error("KLeoba Moxda ragaca Kuradgeba Miakciee 1 !!!!!");
+                console.error(e);
             }
         },
 
-        renameUserInChannel: function (user, currentName) {
+        switchUserChannel: function (user, currentChannel) {
             try {
-                channelList.getElement(user.channel).changeKeyOfElement(user.name, currentName);
+                removeUserFromChannel(user);
+                user.channel = currentChannel;
+                addUserInChannel(user);
             } catch (e) {
-                console.log("KLeoba Moxda ragaca Kuradgeba Miakciee !!!!!");
-                console.log(e);
+                console.error("KLeoba Moxda ragaca Kuradgeba Miakciee 2 !!!!!");
+                console.error(e);
             }
-        },
-
-        getChannelByName: function (name) {
-            return usersChannelsList.getElement(name);
-        },
-
-        getUserByChannelAndName: function (channel, name) {
-            var usersInChannel = channelList.getElement(channel);
-            if (usersInChannel)
-                return usersInChannel.getElement(name);
-            return undefined;
-        },
-
-        getTotalUserCount: function () {
-            return userCount;
         },
 
         eachUserInChannel: function (channel, callback) {
             try {
                 channelList.getElement(channel).eachElement(callback);
             } catch (e) {
-                console.log("KLeoba Moxda ragaca Kuradgeba Miakciee !!!!!");
-                console.log(e);
+                console.error("KLeoba Moxda ragaca Kuradgeba Miakciee 4 !!!!!");
+                console.error(e);
             }
         },
 
@@ -83,8 +72,8 @@ var channelManager = function LDChannelManager() {
                 if (userList) {
                     userList.eachElement(callback);
                 } else {
-                    console.log("Ratoa ees Null ??");
-                    console.log(elem);
+                    console.error("Ratoa ees Null ??");
+                    console.error(elem);
                 }
             });
         }

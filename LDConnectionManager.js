@@ -29,32 +29,36 @@ server.on('message', function (message, remote) {
     var packet = msgpack.unpack(message)
         , action
         , name
-        , registriredUser
+        , registeredUser
         , channel;
 
     if ((action = packet.action) && (name = packet.name) && (channel = packet.channel)) {
-        console.log('Packet of Length ' + message.length + ' Received From ' +
-            remote.address + ':' + remote.port + ' Named ' + name +
-            ' On Channel: ' + channel);
-        registriredUser = userManager.createOrUpdateUser(name, channel, remote);
+//        console.log('Packet of Length ' + message.length + ' Received From ' +
+//            remote.address + ':' + remote.port + ' Named ' + name +
+//            ' On Channel: ' + channel);
+        registeredUser = userManager.createOrUpdateUser(name, channel, remote);
         switch (action) {
-            case 'init':
-                userManager.informUserListChangedInChannel(channel);
+            case 'alive':
+                console.log(registeredUser.userConnection.address + ':' + registeredUser.userConnection.port
+                    + ' Registered As ' + registeredUser.name + ' Is ALive');
                 break;
             case 'disc':
-                userManager.disconectUser(registriredUser);
+                userManager.disconnectUser(registeredUser);
                 break;
             case 'rename':
-                userManager.renameUser(registriredUser, packet['currentName']);
+                userManager.renameUser(registeredUser, packet['currentName']);
+                break;
+            case 'switchchannel':
+                userManager.switchChannel(registeredUser, packet['currentchannel']);
                 break;
             case 'voice':
-                userManager.spreadTheWord(registriredUser, message);
+                userManager.spreadTheWord(registeredUser, message);
                 break;
             case 'mute':
-                userManager.userMutes(registriredUser, packet['villain']);
+                userManager.userMutes(registeredUser, packet['villain']);
                 break;
             case 'unmute':
-                userManager.userUnMutes(registriredUser, packet['villain']);
+                userManager.userUnMutes(registeredUser, packet['villain']);
                 break;
         }
     }

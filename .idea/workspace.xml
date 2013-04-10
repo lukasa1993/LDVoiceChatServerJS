@@ -6,17 +6,18 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LDConnectionManager.js" afterPath="$PROJECT_DIR$/LDConnectionManager.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LDJSHashMap.js" afterPath="$PROJECT_DIR$/LDJSHashMap.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LDUserManager.js" afterPath="$PROJECT_DIR$/LDUserManager.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="LDVoiceChatServerJS.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/LDConnectionManager.js" changelist="48548253-aa6a-4d08-9997-086b6793c877" time="1364983899369" ignored="false" />
-    <file path="/fragment.js" changelist="48548253-aa6a-4d08-9997-086b6793c877" time="1364984473886" ignored="false" />
+    <file path="/LDConnectionManager.js" changelist="48548253-aa6a-4d08-9997-086b6793c877" time="1365414317607" ignored="false" />
+    <file path="/fragment.js" changelist="48548253-aa6a-4d08-9997-086b6793c877" time="1365411513267" ignored="false" />
     <file path="/a.js" changelist="48548253-aa6a-4d08-9997-086b6793c877" time="1363959174655" ignored="false" />
-    <file path="/LDUserManager.js" changelist="48548253-aa6a-4d08-9997-086b6793c877" time="1364991118633" ignored="false" />
+    <file path="/LDUserManager.js" changelist="48548253-aa6a-4d08-9997-086b6793c877" time="1365597511746" ignored="false" />
     <file path="/LDJSHashMap.js" changelist="48548253-aa6a-4d08-9997-086b6793c877" time="1364984056763" ignored="false" />
-    <file path="/Dummy.txt" changelist="48548253-aa6a-4d08-9997-086b6793c877" time="1364896562209" ignored="false" />
-    <file path="/a.dummy" changelist="48548253-aa6a-4d08-9997-086b6793c877" time="1364896643097" ignored="false" />
-    <file path="/LDChannelManager.js" changelist="48548253-aa6a-4d08-9997-086b6793c877" time="1364996421785" ignored="false" />
+    <file path="/Dummy.txt" changelist="48548253-aa6a-4d08-9997-086b6793c877" time="1365070068192" ignored="false" />
+    <file path="/a.dummy" changelist="48548253-aa6a-4d08-9997-086b6793c877" time="1365415768742" ignored="false" />
+    <file path="/LDChannelManager.js" changelist="48548253-aa6a-4d08-9997-086b6793c877" time="1365413112328" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +40,7 @@
       <file leaf-file-name="LDConnectionManager.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/LDConnectionManager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="64" column="48" selection-start="2079" selection-end="2079" vertical-scroll-proportion="0.0">
+            <state line="39" column="25" selection-start="1264" selection-end="1264" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -48,29 +49,25 @@
       <file leaf-file-name="LDUserManager.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/LDUserManager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="118" column="79" selection-start="4878" selection-end="4878" vertical-scroll-proportion="0.0">
-              <folding>
-                <marker date="1364991164000" expanded="true" signature="133:5910" placeholder="{...}" />
-                <marker date="1364991164000" expanded="true" signature="308:5907" placeholder="{...}" />
-                <marker date="1364991164000" expanded="true" signature="4380:5445" placeholder="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LDChannelManager.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/LDChannelManager.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="89" column="9" selection-start="3028" selection-end="3028" vertical-scroll-proportion="0.91412216">
+            <state line="43" column="8" selection-start="1554" selection-end="1554" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LDJSHashMap.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="LDJSHashMap.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/LDJSHashMap.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="12" selection-start="927" selection-end="1047" vertical-scroll-proportion="0.0">
+            <state line="47" column="2" selection-start="1060" selection-end="1060" vertical-scroll-proportion="1.3454199">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LDChannelManager.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/LDChannelManager.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="34" column="60" selection-start="1046" selection-end="1046" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -94,10 +91,10 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/LDConnectionManager.js" />
+        <option value="$PROJECT_DIR$/LDChannelManager.js" />
         <option value="$PROJECT_DIR$/LDJSHashMap.js" />
         <option value="$PROJECT_DIR$/LDUserManager.js" />
-        <option value="$PROJECT_DIR$/LDChannelManager.js" />
+        <option value="$PROJECT_DIR$/LDConnectionManager.js" />
       </list>
     </option>
   </component>
@@ -177,13 +174,13 @@
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="recentsLimit" value="5" />
     <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
-    <property name="restartRequiresConfirmation" value="false" />
+    <property name="recentsLimit" value="5" />
     <property name="last_opened_file_path" value="$USER_HOME$/Downloads/node-msgpack-master 3" />
+    <property name="restartRequiresConfirmation" value="false" />
     <property name="FullScreen" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="PublishConfig">
     <servers>
@@ -270,9 +267,10 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32886723" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27633712" sideWeight="0.67235076" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28119937" sideWeight="0.67235076" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39829478" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -281,7 +279,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -346,45 +343,10 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/LDChannelManager.js</url>
-          <line>41</line>
-          <option name="timeStamp" value="49" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/LDChannelManager.js</url>
-          <line>50</line>
-          <option name="timeStamp" value="51" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/LDChannelManager.js</url>
-          <line>74</line>
-          <option name="timeStamp" value="52" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="64" />
+      <option name="time" value="69" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/LDJSHashMap.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="34" selection-start="808" selection-end="808" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/LDUserManager.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="26" selection-start="1854" selection-end="1854" vertical-scroll-proportion="0.0">
-          <folding>
-            <marker date="1364991164000" expanded="true" signature="133:5910" placeholder="{...}" />
-            <marker date="1364991164000" expanded="true" signature="308:5907" placeholder="{...}" />
-            <marker date="1364991164000" expanded="true" signature="4380:5445" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/LDConnectionManager.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="46" column="10" selection-start="1499" selection-end="1499" vertical-scroll-proportion="0.0">
@@ -402,11 +364,7 @@
     <entry file="file://$PROJECT_DIR$/LDUserManager.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="84" column="87" selection-start="3319" selection-end="3319" vertical-scroll-proportion="0.0">
-          <folding>
-            <marker date="1364991164000" expanded="true" signature="133:5910" placeholder="{...}" />
-            <marker date="1364991164000" expanded="true" signature="308:5907" placeholder="{...}" />
-            <marker date="1364991164000" expanded="true" signature="4380:5445" placeholder="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -451,34 +409,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/LDJSHashMap.js">
+    <entry file="file://$PROJECT_DIR$/msgpack/src/msgpack.cc">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="12" selection-start="927" selection-end="1047" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/msgpack/lib/msgpack.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.5699874">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LDChannelManager.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="60" selection-start="1046" selection-end="1046" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/LDConnectionManager.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="48" selection-start="2079" selection-end="2079" vertical-scroll-proportion="0.0">
+        <state line="39" column="25" selection-start="1264" selection-end="1264" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/LDUserManager.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="118" column="79" selection-start="4878" selection-end="4878" vertical-scroll-proportion="0.0">
-          <folding>
-            <marker date="1364991164000" expanded="true" signature="133:5910" placeholder="{...}" />
-            <marker date="1364991164000" expanded="true" signature="308:5907" placeholder="{...}" />
-            <marker date="1364991164000" expanded="true" signature="4380:5445" placeholder="{...}" />
-          </folding>
+        <state line="43" column="8" selection-start="1554" selection-end="1554" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/LDChannelManager.js">
+    <entry file="file://$PROJECT_DIR$/LDJSHashMap.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="89" column="9" selection-start="3028" selection-end="3028" vertical-scroll-proportion="0.91412216">
+        <state line="47" column="2" selection-start="1060" selection-end="1060" vertical-scroll-proportion="1.3454199">
           <folding />
         </state>
       </provider>
