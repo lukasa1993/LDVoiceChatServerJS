@@ -132,7 +132,12 @@ var userManager = function LDUserManager(server, msgpack) {
 
                         Object.getOwnPropertyNames(user).forEach(function (val) {
                             if (val != 'muteList' && val != 'userConnection' && val != 'lastPackageReceived') {
-                                tmpUser[val] = user[val];
+                                try {
+                                    tmpUser[val] = user[val];
+                                } catch (e) {
+                                    console.log("Ak Xdebaa?")
+                                    console.log(e);
+                                }
                             }
                         });
 
