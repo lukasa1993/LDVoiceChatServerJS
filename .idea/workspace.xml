@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="48548253-aa6a-4d08-9997-086b6793c877" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LDChannelManager.js" afterPath="$PROJECT_DIR$/LDChannelManager.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LDConnectionManager.js" afterPath="$PROJECT_DIR$/LDConnectionManager.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LDUserManager.js" afterPath="$PROJECT_DIR$/LDUserManager.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
     <ignored path="LDVoiceChatServerJS.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,16 +36,25 @@
       <file leaf-file-name="LDConnectionManager.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/LDConnectionManager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="69" column="27" selection-start="2345" selection-end="2345" vertical-scroll-proportion="0.0">
+            <state line="67" column="0" selection-start="2291" selection-end="2291" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LDUserManager.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="README.md" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3" column="6" selection-start="47" selection-end="47" vertical-scroll-proportion="0.085877866">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LDUserManager.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/LDUserManager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="154" column="8" selection-start="6203" selection-end="6203" vertical-scroll-proportion="4.4083967">
+            <state line="37" column="30" selection-start="1411" selection-end="1411" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -93,6 +100,7 @@
         <option value="$PROJECT_DIR$/LDUserManager.js" />
         <option value="$PROJECT_DIR$/LDConnectionManager.js" />
         <option value="$PROJECT_DIR$/LDChannelManager.js" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -345,13 +353,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/LDConnectionManager.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="10" selection-start="1499" selection-end="1499" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/LDJSHashMap.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="30" column="34" selection-start="808" selection-end="808" vertical-scroll-proportion="0.0">
@@ -421,13 +422,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/LDConnectionManager.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="27" selection-start="2345" selection-end="2345" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/LDChannelManager.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="66" column="9" selection-start="2103" selection-end="2103" vertical-scroll-proportion="0.0">
@@ -444,7 +438,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/LDUserManager.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="154" column="8" selection-start="6203" selection-end="6203" vertical-scroll-proportion="4.4083967">
+        <state line="37" column="30" selection-start="1411" selection-end="1411" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LDConnectionManager.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="67" column="0" selection-start="2291" selection-end="2291" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="6" selection-start="47" selection-end="47" vertical-scroll-proportion="0.085877866">
           <folding />
         </state>
       </provider>

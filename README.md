@@ -1,4 +1,4 @@
 LDVoiceChatServerJS
 ===================
 
-faimous LDVoiceChatServer -s NodeJs version
+famous LDVoiceChatServer -s NodeJs version
