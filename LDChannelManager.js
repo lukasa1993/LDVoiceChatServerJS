@@ -64,18 +64,6 @@ var channelManager = function LDChannelManager() {
                 console.error("KLeoba Moxda ragaca Kuradgeba Miakciee 4 !!!!!");
                 console.error(e);
             }
-        },
-
-        eachUserInEveryChannel: function (callback) {
-            channelList.eachElement(function (elem) {
-                var userList = channelList.getElement(elem);
-                if (userList) {
-                    userList.eachElement(callback);
-                } else {
-                    console.error("Ratoa ees Null ??");
-                    console.error(elem);
-                }
-            });
         }
     };
 };

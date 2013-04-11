@@ -156,6 +156,7 @@ var userManager = function LDUserManager(server, msgpack) {
             var deadPeople = 0, self = this;
             console.log("Running DeadPeople Check");
             userList.eachElement(function (elem) {
+
                 if (!checkUserState(elem)) {
                     self.disconnectUser(elem);
                     deadPeople++;

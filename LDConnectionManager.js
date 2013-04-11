@@ -66,6 +66,9 @@ server.on('message', function (message, remote) {
 
 server.bind(PORT, HOST);
 
-setInterval(userManager.checkForDeadPeople, 1800000);
+setInterval(function () {
+    userManager.checkForDeadPeople();
+}, 1800000);
+
 
 
